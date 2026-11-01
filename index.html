@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORVÉQ | عطور</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1F1;--card:#fff;--frost:#E6E2E3;--line:#D9D4D6;--ink:#2B2527;--sub:#5E5659;--accent:#6B1F2E;--on-accent:#fff;--tint:#EAD9DC;--shadow:rgba(43,37,39,.45);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1A1B;--card:#2A2527;--frost:#352F31;--line:#463E41;--ink:#F1ECED;--sub:#BDB3B6;--accent:#D98A9A;--on-accent:#2B2527;--tint:#3B2A2F}}
+:root[data-theme="dark"]{--bg:#1D1A1B;--card:#2A2527;--frost:#352F31;--line:#463E41;--ink:#F1ECED;--sub:#BDB3B6;--accent:#D98A9A;--on-accent:#2B2527;--tint:#3B2A2F}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',Tahoma,Arial,sans-serif;line-height:1.5}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.logo{font-size:24px;font-weight:700;letter-spacing:4px;color:var(--accent)}
+.cartbtn{background:var(--accent);color:var(--on-accent);border:0;border-radius:24px;min-height:44px;padding:0 18px;font-weight:700}
+.hero{background:var(--tint);border-radius:28px;margin:20px 0;padding:36px 28px}
+.hero h1{margin:0 0 8px;font-size:clamp(26px,5vw,40px);line-height:1.3}
+.hero p{margin:0;color:var(--sub);max-width:480px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:24px;min-height:44px;padding:0 18px}
+.chip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding-bottom:48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.img{height:170px;background:var(--frost);border-radius:16px;display:flex;align-items:center;justify-content:center}
+.bottle{position:relative;width:56px;height:96px;background:var(--card);border:2px solid var(--sub);border-radius:12px;margin-top:20px}
+.bottle:before{content:"";position:absolute;top:-22px;left:50%;margin-left:-11px;width:22px;height:22px;background:var(--accent);border-radius:5px}
+.bottle:after{content:"";position:absolute;top:34px;left:50%;margin-left:-13px;width:26px;height:26px;border:1.5px solid var(--sub);border-radius:50%}
+.card h3{margin:8px 0 0;font-size:17px}
+.meta{font-size:13px;color:var(--sub)}
+.price{font-weight:700;color:var(--accent)}
+.add{margin-top:6px;background:var(--accent);color:var(--on-accent);border:0;border-radius:22px;min-height:44px;font-weight:700}
+.empty{color:var(--sub);padding:40px 0;text-align:center;grid-column:1/-1}
+.ov{position:fixed;inset:0;background:var(--shadow);display:none;z-index:9}
+.ov.open{display:block}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(400px,100%);background:var(--bg);z-index:10;display:none;flex-direction:column;padding:calc(16px + env(safe-area-inset-top,0px)) 18px calc(16px + env(safe-area-inset-bottom,0px))}
+.drawer.open{display:flex}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dh h2{margin:0;font-size:20px}
+.x{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:50%;width:44px;height:44px}
+.items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.it{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--frost);color:var(--ink);font-size:18px}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;padding:14px 0}
+.msg{background:var(--tint);border-radius:14px;padding:10px 14px;font-size:14px;margin-bottom:10px}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--sub);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="logo" dir="ltr">ORVÉQ</div><button class="cartbtn" id="open">السلة (<span id="count">0</span>)</button></div></header>
+<main class="wrap">
+<section class="hero"><h1>اكتشف عطرك المفضل</h1><p>تشكيلة من العطور الراقية بروائح منعشة ودافئة تناسب كل الأذواق.</p></section>
+<div class="chips" id="chips"></div>
+<div class="grid" id="grid"></div>
+</main>
+<footer><div class="wrap"><span dir="ltr">ORVÉQ</span> — جميع الحقوق محفوظة</div></footer>
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="سلة التسوق">
+<div class="dh"><h2>سلة التسوق</h2><button class="x" id="close" aria-label="إغلاق">✕</button></div>
+<div class="items" id="items"></div>
+<div id="note"></div>
+<div class="tot"><span>المجموع</span><span id="total">—</span></div>
+<button class="add" id="checkout">إتمام الطلب</button>
+</aside>
+<script>
+/* ===== أضف منتجاتك وأسعارك هنا =====
+   price: ضع رقمًا (مثل 120) أو اتركه null ليظهر "السعر قريبًا"
+   cat: women | men | unisex */
+var CURRENCY = "";
+var PRODUCTS = [
+  {id:1,name:"عطر الصقيع",note:"خشبي · منعش",cat:"unisex",price:null},
+  {id:2,name:"نسيم الثلج",note:"مسكي · ناعم",cat:"women",price:null},
+  {id:3,name:"ليلة هادئة",note:"عنبري · دافئ",cat:"men",price:null},
+  {id:4,name:"وردة الشتاء",note:"زهري · ناعم",cat:"women",price:null},
+  {id:5,name:"أرز وعود",note:"خشبي · عميق",cat:"men",price:null},
+  {id:6,name:"قطرة الندى",note:"حمضي · منعش",cat:"unisex",price:null}
+];
+var CATS = [["all","الكل"],["women","للنساء"],["men","للرجال"],["unisex","للجنسين"]];
+var cat = "all", cart = {};
+try { cart = JSON.parse(localStorage.getItem("cart") || "{}") || {}; } catch (e) { cart = {}; }
+function save(){ try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (e) {} }
+function $(i){ return document.getElementById(i); }
+function fmt(p){ return p == null ? "السعر قريبًا" : p + (CURRENCY ? " " + CURRENCY : ""); }
+function find(id){ return PRODUCTS.filter(function(p){ return p.id == id; })[0]; }
+function renderChips(){
+  $("chips").innerHTML = CATS.map(function(c){ return '<button class="chip'+(c[0]===cat?' on':'')+'" data-c="'+c[0]+'">'+c[1]+'</button>'; }).join("");
+}
+function renderGrid(){
+  var list = PRODUCTS.filter(function(p){ return cat === "all" || p.cat === cat; });
+  $("grid").innerHTML = list.length ? list.map(function(p){
+    return '<article class="card"><div class="img"><div class="bottle"></div></div><h3>'+p.name+'</h3><div class="meta">'+p.note+'</div><div class="price">'+fmt(p.price)+'</div><button class="add" data-a="'+p.id+'">أضف إلى السلة</button></article>';
+  }).join("") : '<div class="empty">لا توجد منتجات في هذا القسم بعد.</div>';
+}
+function renderCart(){
+  var ids = Object.keys(cart).filter(function(i){ return find(i) && cart[i] > 0; });
+  var n = 0, sum = 0, unpriced = false;
+  $("items").innerHTML = ids.length ? ids.map(function(i){
+    var p = find(i), q = cart[i]; n += q;
+    if (p.price == null) unpriced = true; else sum += p.price * q;
+    return '<div class="it"><div><div><b>'+p.name+'</b></div><div class="meta">'+fmt(p.price)+'</div></div><div class="qty"><button data-m="'+i+'" aria-label="إنقاص">−</button><span>'+q+'</span><button data-p="'+i+'" aria-label="زيادة">+</button></div></div>';
+  }).join("") : '<div class="empty">السلة فارغة.</div>';
+  $("count").textContent = n;
+  $("total").textContent = !ids.length ? "—" : (unpriced ? "يُحدد لاحقًا" : fmt(sum));
+}
+function setQty(i, d){ cart[i] = Math.max(0, (cart[i] || 0) + d); if (!cart[i]) delete cart[i]; save(); renderCart(); }
+function toggle(o){ $("drawer").classList.toggle("open", o); $("ov").classList.toggle("open", o); if (o) $("note").innerHTML = ""; }
+document.addEventListener("click", function(e){
+  var t = e.target;
+  if (t.dataset.c) { cat = t.dataset.c; renderChips(); renderGrid(); }
+  else if (t.dataset.a) { setQty(t.dataset.a, 1); }
+  else if (t.dataset.p) { setQty(t.dataset.p, 1); }
+  else if (t.dataset.m) { setQty(t.dataset.m, -1); }
+});
+$("open").onclick = function(){ toggle(true); };
+$("close").onclick = $("ov").onclick = function(){ toggle(false); };
+$("checkout").onclick = function(){
+  $("note").innerHTML = '<div class="msg">' + (Object.keys(cart).length ? 'الدفع وتأكيد الطلب سيتم ربطهما لاحقًا.' : 'أضف منتجًا إلى السلة أولًا.') + '</div>';
+};
+renderChips(); renderGrid(); renderCart();
+</script>
+</body>
+</html>
